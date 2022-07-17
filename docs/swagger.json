@@ -1,0 +1,66 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "FontPeek Public Unicode API",
+        "contact": {},
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0"
+    },
+    "host": "unicode.fontpeek.com",
+    "basePath": "/",
+    "paths": {
+        "/5.2.0/ucd": {
+            "get": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "directory"
+                ],
+                "summary": "Query Unicode characters",
+                "operationId": "unicode-character-directory",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Unicode Point hexadecimal (e.g. 0041)",
+                        "name": "cp",
+                        "in": "query"
+                    },
+                    {
+                        "type": "string",
+                        "description": "Comma-separated list of fields to include in the response",
+                        "name": "fields",
+                        "in": "query"
+                    },
+                    {
+                        "maximum": 100,
+                        "minimum": 1,
+                        "type": "integer",
+                        "default": 5,
+                        "description": "How many results to include",
+                        "name": "limit",
+                        "in": "query"
+                    },
+                    {
+                        "minimum": 0,
+                        "type": "integer",
+                        "description": "Lookup offset",
+                        "name": "offset",
+                        "in": "query"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

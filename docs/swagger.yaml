@@ -1,0 +1,45 @@
+basePath: /
+host: unicode.fontpeek.com
+info:
+  contact: {}
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: FontPeek Public Unicode API
+  version: "1.0"
+paths:
+  /5.2.0/ucd:
+    get:
+      operationId: unicode-character-directory
+      parameters:
+      - description: Unicode Point hexadecimal (e.g. 0041)
+        in: query
+        name: cp
+        type: string
+      - description: Comma-separated list of fields to include in the response
+        in: query
+        name: fields
+        type: string
+      - default: 5
+        description: How many results to include
+        in: query
+        maximum: 100
+        minimum: 1
+        name: limit
+        type: integer
+      - description: Lookup offset
+        in: query
+        minimum: 0
+        name: offset
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Query Unicode characters
+      tags:
+      - directory
+swagger: "2.0"
